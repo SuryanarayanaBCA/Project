@@ -74,12 +74,14 @@ brevo_api = sib_api_v3_sdk.TransactionalEmailsApi(
 
 # ---------------- MYSQL CONFIG ----------------
 db_config = {
-    "host": os.getenv("DB_HOST"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": os.getenv("DB_NAME"),
+    "host": os.getenv("MYSQLHOST"),
+    "user": os.getenv("MYSQLUSER"),
+    "password": os.getenv("MYSQLPASSWORD"),
+    "database": os.getenv("MYSQLDATABASE"),
+    "port": int(os.getenv("MYSQLPORT",3306)),
     "autocommit": True
 }
+
 
 
 def get_db():
@@ -702,4 +704,5 @@ def send_ticket_email(to_email, subject, body, attachment_path=None):
 # ---------------- RUN SERVER ----------------
 if __name__ == "__main__":
     app.run()
+
 
